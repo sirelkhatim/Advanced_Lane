@@ -43,7 +43,9 @@ Finally we use a combination of these thresholded image to obtain an image of th
 We can warp the images using perspective transform by identifying source points and where they should be mapped,
 destination points. 
 ![](warped.png)
+
 ### Finding lane lines
+
 In order to find lane lines we split our lane lines into windows and iterate through each window.
 We then find the boundary of the window in question. We proceed to use cv2.rectangle to draw these window boundaries
 into our image. We then find the activated pixels from nonzeroy and nonzerox and append these to left_land_inds and right_lane_inds.
@@ -55,8 +57,15 @@ finding lane lines:
 
 ![](find_lane_lines.png)
 
+Finally we calculate the radius of curvature by taking measurements of where the lane lines are and estimate how much
+the road is curving and where the vehicle is loated with respec to the center of the lane line. The radius of curvature is 
+given in meters as you can see
+
+![](curvature.png)
+
 ## Pipeline (video)
-The video can be found
+
+The video can be found in project_video_solution.mp4
 ## Discussion
 The method used in this project to find lane lines, depends heavily on lane lines being clearly marked. If we have 
 very faint lane lines, our algorithm will start to perform poorer. Furthermore, finding the source and destination points,
